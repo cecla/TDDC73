@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Labb1</string>
+    <string name="name">Namn</string>
+    <string name="losenord">Lösenord</string>
+    <string name="epost">Epost</string>
+    <string name="alder">Ålder</string>
+    <string name="trivsel">Hur trivs du på LiU?</string>
+    <string name="good">Bra</string>
+    <string name="very_good">Mycket bra</string>
+    <string name="best">Jättebra</string>
+    <string name="reading">Läser du på LiTH?</string>
+    <string name="ja">Ja</string>
+    <string name="nej">Nej</string>
+    <string name="logga">Är detta LiUs logga?</string>
+    <string name="liu_logga">Liu logga</string>
+    <string name="skicka_in">SKICKA IN</string>
+</resources>
