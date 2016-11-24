@@ -77,8 +77,6 @@
         android:src="@drawable/liulogo"
         android:id="@+id/imageView"
         android:contentDescription="@string/liu_logga"
-        android:scrollX="0.4"
-        android:scrollY="0.4"
         android:scaleX="0.5"
         android:scaleY="0.5"
         android:layout_alignTop="@+id/textView5"
