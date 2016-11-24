@@ -6,6 +6,8 @@ import android.text.InputType;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.SeekBar;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 public class MainActivity extends Activity {
@@ -16,6 +18,7 @@ public class MainActivity extends Activity {
 
         RelativeLayout myLayout = new RelativeLayout(this);
 
+        //TEXTVIEW, left column
         TextView textName = new TextView(this);
         textName.setText("Namn");
         textName.setEms(5);
@@ -33,11 +36,13 @@ public class MainActivity extends Activity {
         textAge.setEms(5);
         textAge.setId(4);
 
+        //EDITTEXT, right column
         EditText name = new EditText(this);
         name.setId(6);
         name.setEms(13);
+        name.setInputType(InputType.TYPE_CLASS_TEXT);
         EditText password = new EditText(this);
-        password.setInputType(InputType.TYPE_TEXT_VARIATION_PASSWORD);
+        password.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
         password.setId(7);
         password.setEms(13);
         EditText epost = new EditText(this);
@@ -46,67 +51,31 @@ public class MainActivity extends Activity {
         epost.setEms(13);
         SeekBar age = new SeekBar(this);
 
-        RelativeLayout.LayoutParams nameP = new RelativeLayout.LayoutParams(
-                RelativeLayout.LayoutParams.WRAP_CONTENT,
-                RelativeLayout.LayoutParams.WRAP_CONTENT);
-        RelativeLayout.LayoutParams passP = new RelativeLayout.LayoutParams(
-                RelativeLayout.LayoutParams.WRAP_CONTENT,
-                RelativeLayout.LayoutParams.WRAP_CONTENT);
-        RelativeLayout.LayoutParams epostP = new RelativeLayout.LayoutParams(
-                RelativeLayout.LayoutParams.WRAP_CONTENT,
-                RelativeLayout.LayoutParams.WRAP_CONTENT);
-        RelativeLayout.LayoutParams ageP = new RelativeLayout.LayoutParams(
-                RelativeLayout.LayoutParams.WRAP_CONTENT,
-                RelativeLayout.LayoutParams.WRAP_CONTENT);
+        //TABLE
+        TableLayout table = new TableLayout(this);
+        TableRow t1 = new TableRow(this);
+        TableRow t2 = new TableRow(this);
+        TableRow t3 = new TableRow(this);
+        TableRow t4 = new TableRow(this);
 
-        nameP.addRule(RelativeLayout.ALIGN_PARENT_TOP);
-        nameP.addRule(RelativeLayout.ALIGN_PARENT_START);
-        nameP.setMargins(0,50,0,0);
+        t1.addView(textName);
+        t1.addView(name);
 
-        passP.addRule(RelativeLayout.BELOW, textName.getId());
-        passP.setMargins(0,80,0,0);
+        t2.addView(textPassword);
+        t2.addView(password);
 
-        epostP.addRule(RelativeLayout.BELOW, textPassword.getId());
-        epostP.setMargins(0,100,0,0);
+        t3.addView(textEpost);
+        t3.addView(epost);
 
-        ageP.addRule(RelativeLayout.BELOW, textEpost.getId());
-        ageP.setMargins(0,120,0,0);
+        t4.addView(textAge);
+        t4.addView(age);
 
-        myLayout.addView(textName, nameP);
-        myLayout.addView(textPassword, passP);
-        myLayout.addView(textEpost, epostP);
-        myLayout.addView(textAge, ageP);
+        table.addView(t1);
+        table.addView(t2);
+        table.addView(t3);
+        table.addView(t4);
 
-        RelativeLayout.LayoutParams np = new RelativeLayout.LayoutParams(
-                RelativeLayout.LayoutParams.WRAP_CONTENT,
-                RelativeLayout.LayoutParams.WRAP_CONTENT);
-        RelativeLayout.LayoutParams pp = new RelativeLayout.LayoutParams(
-                RelativeLayout.LayoutParams.WRAP_CONTENT,
-                RelativeLayout.LayoutParams.WRAP_CONTENT);
-        RelativeLayout.LayoutParams ep = new RelativeLayout.LayoutParams(
-                RelativeLayout.LayoutParams.WRAP_CONTENT,
-                RelativeLayout.LayoutParams.WRAP_CONTENT);
-        RelativeLayout.LayoutParams ap = new RelativeLayout.LayoutParams(
-                RelativeLayout.LayoutParams.WRAP_CONTENT,
-                RelativeLayout.LayoutParams.WRAP_CONTENT);
-
-        np.addRule(RelativeLayout.ALIGN_PARENT_TOP);
-        np.addRule(RelativeLayout.ALIGN_PARENT_END);
-
-        pp.addRule(RelativeLayout.BELOW, name.getId());
-        pp.addRule(RelativeLayout.ALIGN_PARENT_END);
-
-        ep.addRule(RelativeLayout.BELOW, password.getId());
-        ep.addRule(RelativeLayout.ALIGN_PARENT_END);
-
-        ap.addRule(RelativeLayout.ALIGN_BOTTOM, textAge.getId());
-        ap.addRule(RelativeLayout.ALIGN_PARENT_END);
-        ap.addRule(RelativeLayout.RIGHT_OF, textAge.getId());
-
-        myLayout.addView(name, np);
-        myLayout.addView(password, pp);
-        myLayout.addView(epost, ep);
-        myLayout.addView(age, ap);
+        myLayout.addView(table);
 
         setContentView(myLayout);
     }
