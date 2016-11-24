@@ -74,7 +74,7 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:srcCompat="@drawable/liulogo"
+        android:src="@drawable/liulogo"
         android:id="@+id/imageView"
         android:contentDescription="@string/liu_logga"
         android:scrollX="0.4"

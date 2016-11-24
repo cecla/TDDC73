@@ -14,4 +14,7 @@
     <string name="logga">Är detta LiUs logga?</string>
     <string name="liu_logga">Liu logga</string>
     <string name="skicka_in">SKICKA IN</string>
+    <string name="knapp">KNAPP</string>
+    <string name="multi_text">multi text</string>
+    <string name="text_field1">single line</string>
 </resources>

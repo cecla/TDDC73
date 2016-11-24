@@ -2,6 +2,7 @@ package com.example.cecilialagerwall.labb1;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.text.InputType;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RatingBar;
@@ -19,7 +20,7 @@ public class MainActivity extends Activity {
         RelativeLayout myLayout = new RelativeLayout(this);
 
         EditText myEditText = new EditText(this);
-        myEditText.setMaxLines(1);
+        myEditText.setInputType(InputType.TYPE_CLASS_TEXT);
         myEditText.setEms(10);
         RatingBar myRatingBar = new RatingBar(this);
         EditText myEditText2 = new EditText(this);
@@ -43,7 +44,7 @@ public class MainActivity extends Activity {
         RelativeLayout.LayoutParams textParams2 =
                 new RelativeLayout.LayoutParams(
                         RelativeLayout.LayoutParams.WRAP_CONTENT,
-                        RelativeLayout.LayoutParams.WRAP_CONTENT);
+                        RelativeLayout.LayoutParams.FILL_PARENT);
 
         RelativeLayout.LayoutParams ratingParams =
                 new RelativeLayout.LayoutParams(
