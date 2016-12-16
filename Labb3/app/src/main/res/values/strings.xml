@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Labb3</string>
+    <string name="knapp">KNAPP</string>
+    <string name="android">Android</string>
+    <string name="change_text">Change this text, pls!</string>
+    <string name="write_a_name">Write a name</string>
+</resources>
