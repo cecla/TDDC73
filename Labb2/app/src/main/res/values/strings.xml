@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Labb2</string>
+    <string name="text">editTextString</string>
+    <string name="item">Item</string>
+    <string name="childtext">childText</string>
+    <string name="parenttext">parentText</string>
+    <string name="slash">/</string>
+</resources>
