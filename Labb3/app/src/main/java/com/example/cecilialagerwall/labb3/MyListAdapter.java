@@ -28,6 +28,7 @@ public class MyListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int pos, View view, ViewGroup viewGroup){
+        //create an item with the name on the specified position
         return new CreateItemView(context, theList.get(pos));
     }
 

@@ -24,6 +24,8 @@ import java.util.HashMap;
 
 /**
  * Created by cecilialagerwall on 2016-11-29.
+ * Create a search on an url-link. Gets back a list of names.
+ * Display the list of names by using a specified view component
  */
 
 public class InteractiveSearcher extends EditText {
@@ -32,28 +34,40 @@ public class InteractiveSearcher extends EditText {
     Context context;
     ListPopupWindow listPopupWindow;
     ArrayList<String> theList;
-    HashMap<Integer, ArrayList<String>> searchList = new HashMap<Integer, ArrayList<String>>();
+    HashMap<Integer, ArrayList<String>> searchList = new HashMap<Integer, ArrayList<String>>();//key=id, array=the list of names
     int countID = 0;
     MyListAdapter myListAdapter;
     int nrOfItems;
 
+    /**Default constructor*/
+    public InteractiveSearcher(Context context){
+        super(context);
+        this.context = context;
+        this.nrOfItems = 5;
+        init();
+    }
+    /*Constructor with specified insert of max numbers of names to display**/
     public InteractiveSearcher(Context context, int nrOfItems){
         super(context);
         this.context = context;
         this.nrOfItems = nrOfItems;
         init();
     }
+
     private void init(){
         setEms(10);
         setHint("Search...");
 
+        //add text watcher on the object
         this.addTextChangedListener((TextWatcher) changedText);
 
+        //Create a list popup window to display the result
         listPopupWindow = new ListPopupWindow(context);
         listPopupWindow.setAnchorView(this);
         listPopupWindow.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int pos, long id){
+                //get value from list
                 setText(adapterView.getItemAtPosition(pos).toString());
             }
         });
@@ -73,7 +87,7 @@ public class InteractiveSearcher extends EditText {
 
             if(s.length() > 0){
                 String urlString = "http://flask-afteach.rhcloud.com/getnames/" + countID++ + "/"  + s;
-
+                //connect to the url
                 new TestAsync().execute(urlString);
 
             }
@@ -88,14 +102,17 @@ public class InteractiveSearcher extends EditText {
 
             Log.d("ids", rightID + "  " + countID);
 
-            //if(rightID == countID){
+            //right order
+            if(rightID == countID){
+                //display the list with right id
                 myListAdapter = new MyListAdapter(context, searchList.get(countID));
                 listPopupWindow.setAdapter(myListAdapter);
                 listPopupWindow.show();
-            //}
+            }
 
         }
 
+        //the connection
         @Override
         protected String doInBackground(String... urls) {
 
@@ -137,6 +154,7 @@ public class InteractiveSearcher extends EditText {
         }
     }
 
+    //take out the names from the JSON object
     private int parseJSON(String string){
 
         if (string != null) {
@@ -146,6 +164,7 @@ public class InteractiveSearcher extends EditText {
 
                 JSONArray names = jsonObject.getJSONArray("result");
 
+                //make sure we don't display more names that we have specified
                 if(names.length() > nrOfItems){
                     for (int i = 0; i < nrOfItems; i++) {
                         theList.add(names.get(i).toString());
@@ -156,9 +175,10 @@ public class InteractiveSearcher extends EditText {
                     }
                 }
 
-
+                //insert search id and the list of names into the HashMap
                 searchList.put(countID, theList);
 
+                //controller of displaying in right order
                 return countID;
 
             } catch (final JSONException e) {

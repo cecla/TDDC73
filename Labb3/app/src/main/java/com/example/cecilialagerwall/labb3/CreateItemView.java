@@ -31,7 +31,7 @@ public class CreateItemView extends View {
     protected void onDraw(Canvas canvas){
         super.onDraw(canvas);
         paint.setColor(Color.BLUE);
-        paint.setTextSize(20f);
+        paint.setTextSize(40f);
 
         canvas.drawText(resultItem, 0, paint.getTextSize(), paint);
     }
@@ -39,6 +39,7 @@ public class CreateItemView extends View {
     @Override
     protected void onMeasure(int widthMeasureSpec,int heightMeasureSpec){
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-        setMeasuredDimension(100, 50);
+        int w = MeasureSpec.getSize(widthMeasureSpec);
+        setMeasuredDimension(w, 50);
     }
 }
