@@ -5,8 +5,6 @@ import android.graphics.Color;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
-import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -61,12 +59,12 @@ public class TheForm extends LinearLayout {
         setOrientation(LinearLayout.VERTICAL);
 
         //name
-        final FormItem nameItem = new FormItem(context, InputType.TYPE_CLASS_TEXT, "Name*", false);
+        final FormItem nameItem = new FormItem(context, InputType.TYPE_CLASS_TEXT, "Name", false);
         noOptional.add(nameItem);
         this.addView(nameItem);
 
         //username
-        final FormItem uNameItem = new FormItem(context, InputType.TYPE_CLASS_TEXT, "User name*", false);
+        final FormItem uNameItem = new FormItem(context, InputType.TYPE_CLASS_TEXT, "User name", false);
         noOptional.add(uNameItem);
         this.addView(uNameItem);
 
@@ -106,7 +104,6 @@ public class TheForm extends LinearLayout {
             public void onClick(View v) {
                 for(int i = 0; i < noOptional.size(); i++){
                     if(noOptional.get(i).getInput().length() == 0){
-                        Log.d("no insert", "color RED");
                         noOptional.get(i).setBackgroundColor(Color.RED);
                     }
                 }

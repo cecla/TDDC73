@@ -36,7 +36,7 @@ public class FormItem extends EditText {
         super(context);
         this.context = context;
         this.insertType = insertType;
-        this.hint = hint;
+        this.hint = (optional) ? hint : hint + "*";
         this.optional = optional;
         init();
     }
